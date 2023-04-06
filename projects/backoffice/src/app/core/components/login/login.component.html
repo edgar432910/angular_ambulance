@@ -1,0 +1,47 @@
+<form fxLayout="column" [formGroup]="formGroup">
+  <h1>Sistema de Historias Medicas</h1>
+  <h2>Credenciales</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Correo</mat-label>
+    <input type="text" matInput formControlName="email" required />
+    <mat-error *ngIf="email?.hasError('required')"
+      >El correo es obligatorio
+    </mat-error>
+    <mat-error *ngIf="email?.hasError('email')"
+      >Debe ingresar un correo valido</mat-error
+    >
+    <mat-error *ngIf="email?.hasError('emailNotAllowed')"
+      >Debe ingresar un correo de la empresa
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Contrasena</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="password"
+      (input)="validateForm()"
+      required
+    />
+    <mat-error *ngIf="formGroup.get('password')?.hasError('required')"
+      >La contrasena es requerida</mat-error
+    >
+    <mat-error
+      *ngIf="
+        formGroup.get('password')?.hasError('minlength') ||
+        formGroup.get('password')?.hasError('maxlength')
+      "
+      >La contrasena debe estar entre 3 y 20valores</mat-error
+    >
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="button"
+    (click)="login()"
+    [disabled]="formGroup.invalid"
+  >
+    Ingresar
+  </button>
+</form>

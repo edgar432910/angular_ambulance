@@ -1,0 +1,33 @@
+<div
+  fxLayout
+  fxLayout.lt-sm="column"
+  fxLayoutAlign="space-between"
+  class="container"
+  [ngStyle]="{
+    'background-image':
+      'url(assets/images/background.png
+           )'
+  }"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center"
+    fxFlex="1 1 30%"
+    fxFlex.lt-md="1 1 50%"
+    fxFlex.lt-sm="1 1 100%"
+    class="info"
+    fxHide.lt-sm
+  >
+    <h2>Sistema de Historias Medicas</h2>
+  </div>
+  <div
+    fxLayout
+    fxFlex="1 1 30%"
+    fxFlex.lt-md="1 1 50%"
+    fxFlex.lt-sm="1 1 100%"
+    fxLayoutAlign="center center"
+    class="login"
+  >
+    <amb-login></amb-login>
+  </div>
+</div>
