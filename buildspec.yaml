@@ -13,9 +13,9 @@ phases:
       - npm run build:prod
   post_build:
     commands:
-      - aws s3 rm s3://cursoangular13-$(AMBIENTE) --recursive
-      - aws s3 sync ./dist/backoffice s3://cursoangular13-$(AMBIENTE) --delete
-      - aws cloudfront create-invalidation --distribution-id E274GXLZWX6TC3 --paths '/*'
+      - aws s3 rm $BUCKET_NAME --recursive
+      - aws s3 sync ./dist/backoffice $BUCKET_NAME --delete
+      - aws cloudfront create-invalidation --distribution-id $DISTRIBUTIONID --paths '/*'
 artifacts:
   name: "BuildOutput"
   file:
