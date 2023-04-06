@@ -13,8 +13,13 @@ phases:
       - npm run build:prod
   post_build:
     commands:
+<<<<<<< HEAD
       - aws s3 rm $BUCKETNAME --recursive
       - aws s3 sync ./dist/backoffice $BUCKETNAME --delete
+=======
+      - aws s3 rm $BUCKET_NAME --recursive
+      - aws s3 sync ./dist/backoffice $BUCKET_NAME --delete
+>>>>>>> b5a9f0bd2a96479e6c07c33c1f99f7e95fdcb063
       - aws cloudfront create-invalidation --distribution-id $DISTRIBUTIONID --paths '/*'
 artifacts:
   name: "BuildOutput"
